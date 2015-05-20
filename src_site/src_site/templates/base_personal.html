@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% load staticfiles %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Titulo</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="screen" />
+<link href="{% static 'bootstrap/css/bootstrap.min.css' %}"  rel="stylesheet" media="screen">
+</head>
+<body>
+
+<div id="wrap">
+<div id="header">
+<h1><a href="#">Titulo</a></h1>
+<h2>Professor do Instituto Federal de Educação, Ciência e Tecnologia do Piauí</h2>
+</div>
+
+<div id="right">
+<h2><a href="#">Titulo</a></h2>
+<div class="articles">
+    {% block conteudo %}
+
+    {% endblock%}
+</div>
+
+
+</div>
+
+<div id="left"> 
+<!--
+<h3>Categories :</h3>
+-->
+<ul>
+    <li><a href="{% url 'index' %}">Início</a></li>
+    <li><a href="{% url 'sobre' %}">Sobre</a></li>
+</ul>
+
+</div>
+<div style="clear: both;"> </div>
+
+<div id="footer">
+Instituto Federal de Educação, Ciência e Tecnologia do Piauí.<br /> 
+Campus Teresina Zona Sul<br />
+</div>
+</div>
+
+
+</body>
+</html>
