@@ -1,0 +1,10 @@
+.align-right {
+    float: right;
+}
+.quebra-linha{
+    clear: left;
+}
+.text-branco {
+  color: #FFFFFF;
+  margin-top: 4%;
+}

@@ -1,2 +1,14 @@
 {%extends "base_personal.html" %}
-{%block conteudo %}&nbsp{%endblock %}
+{%block conteudo %}
+
+{% for item in evento %}
+        <p>{{item.nome}}</p>
+        <p>De {{item.dataInicio}} a {{item.dataTermino}}</p>
+        <p><b>Local:</b> {{item.local}}</p>
+        <p class="altura-10">&nbsp;</p>
+        <p><li><a href="{% url 'sobre' %}">Saiba mais</a></li></p>
+{% empty %}
+    <p>Nenhum evento ativo no momento.</p>
+{% endfor %}
+
+{%endblock %}
