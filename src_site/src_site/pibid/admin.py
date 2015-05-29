@@ -1,13 +1,12 @@
 from django.contrib import admin
-from src_site.pibid.models import Empresa, Evento, Colaborador, Preco, TipoParticipante, Participante, TipoAtividade, \
-    Atividade, Inscricao
+from src_site.pibid.models import *
 
 # Register your models here.
 
 class EmpresaAdmin(admin.ModelAdmin):
     model = Empresa
-    list_display = ['nome', 'valor', 'outros']
-    search_fields = ['nome', 'valor', 'outros']
+    list_display = ['nome', 'valor', 'outros', 'evento']
+    search_fields = ['nome', 'valor', 'outros', 'evento__nome']
 admin.site.register(Empresa, EmpresaAdmin)
 
 
@@ -27,8 +26,8 @@ admin.site.register(Colaborador, ColaboradorAdmin)
 
 class PrecoAdmin(admin.ModelAdmin):
     model = Preco
-    list_display = ['normal', 'desconto']
-    search_fields = ['normal', 'desconto']
+    list_display = ['normal','tipo','atividade']
+    search_fields = ['normal', 'tipo__nome', 'atividade__titulo']
 admin.site.register(Preco, PrecoAdmin)
 
 
@@ -56,10 +55,10 @@ admin.site.register(TipoAtividade, TipoAtividadeAdmin)
 
 class AtividadeAdmin(admin.ModelAdmin):
     model = Atividade
-    list_display = ['descricao', 'duracao', 'quantidadeVagas', 'dataInicio', 'dataTermino', 'horario', 'tipo', 'evento']
+    list_display = ['titulo', 'duracao', 'quantidadeVagas', 'dataInicio', 'dataTermino', 'horario', 'tipo', 'evento', 'colaborador']
     list_filter = ['tipo__nome', 'evento__nome']
-    search_fields = ['descricao', 'duracao', 'quantidadeVagas', 'dataInicio', 'dataTermino', 'horario', 'tipo__nome',
-                 'evento__nome']
+    search_fields = ['titulo', 'duracao', 'quantidadeVagas', 'dataInicio', 'dataTermino', 'horario', 'tipo__nome',
+                 'evento__nome', 'colaborador__nome']
 admin.site.register(Atividade, AtividadeAdmin)
 
 

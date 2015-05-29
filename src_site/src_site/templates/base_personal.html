@@ -3,8 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Titulo</title>
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="screen" />
-<link href="{% static 'bootstrap/css/bootstrap.min.css' %}"  rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="screen" />
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}"  rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-responsive.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sl-slide.css' %}">
 </head>
 <body>
 
@@ -15,7 +19,7 @@
 </div>
 
 <div id="right">
-<h2><a href="#">Titulo</a></h2>
+<h2><a href="#">{% block pagina %}{% endblock%}</a></h2>
 <div class="articles">
     {% block conteudo %}
 
@@ -30,8 +34,10 @@
 <h3>Categories :</h3>
 -->
 <ul>
-    <li><a href="{% url 'index' %}">Início</a></li>
-    <li><a href="{% url 'sobre' %}">Sobre</a></li>
+    <li><a href="{% url 'eventoList' %}">Início</a></li>
+    <li><a href="{% url 'palestraList' %}">Palestras</a></li>
+    <li><a href="{% url 'minicursoList' %}">Minicursos</a></li>
+    <li><a href="{% url 'eventoSobre' %}">Sobre</a></li>
 </ul>
 
 </div>

@@ -1,0 +1,17 @@
+{%extends "base_personal.html" %}
+
+{%block conteudo %}
+
+{% for item in object_list %}
+
+    <h4>De {{item.dataInicio}} a {{item.dataTermino}}</h4>
+    <h4>{{item.tipo}}: {{item}}</h4>
+    <p>Horário: {{item.horario}}</p>
+    <p>Palestrante: {{item.colaborador}}</p>
+    <p class="texto-justificar">Resumo: {{item.resumo}}</p>
+    <hr>
+{% empty %}
+    <p>Nenhuma atividade ativa no momento.</p>
+{% endfor %}
+
+{%endblock %}
