@@ -1,0 +1,19 @@
+{%extends "base_personal.html" %}
+
+{% block div_porcentagem_progresso %}100{% endblock%}
+{% block span_porcentagem_progresso %}100{% endblock%}
+
+{%block pagina %}<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> &nbsp; Inscrição concluída{%endblock %}
+{%block conteudo %}
+
+    <p class="texto-justificar">
+        Olá, <br/>
+        Obrigado por fazer parte deste evento! Sua inscrição foi concluída com sucesso.
+        Fique atento as datas e horários da(s) palestra(s) e/ou minicurso(s) que você escolheu!<br/>
+        <hr/>
+        Divirta-se!<br/>
+        Convide seus amigos
+    </p>
+
+    <script>$("#fieldset-inscricao").slideDown("slow");</script>
+{%endblock %}

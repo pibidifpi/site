@@ -1,0 +1,22 @@
+{%extends "base_personal.html" %}
+{%block pagina %}Palestras{%endblock %}
+{%block conteudo %}
+
+{% for item in object_list %}
+
+    <h4>{{item.tipo}}: {{item}}</h4>
+    <p>{{item.dataInicio}} - {{item.horario}}</p>
+    <p class="texto-justificar"> <b>Resumo:</b> {{item.resumo}}</p>
+    <h5><b>Palestrante:</b> {{item.colaborador}}</h5>
+    <p class="texto-justificar">{{item.colaborador.informacoes}}</p>
+    {% if item.material %}
+    <p><li><a href="{{MEDIA_URL}}{{item.material}}" target="_blank">Ver Material</a></li></p>
+
+    {% endif %}
+    <p><li><a href="/precos/{{item.id}}">Ver preços</a></li></p>
+    <hr>
+{% empty %}
+    <p>Nenhuma palestra ativa no momento.</p>
+{% endfor %}
+
+{%endblock %}

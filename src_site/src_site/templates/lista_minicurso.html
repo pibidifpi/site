@@ -1,0 +1,26 @@
+{%extends "base_personal.html" %}
+{%block pagina %}Minicursos{%endblock %}
+{%block conteudo %}
+
+{% for item in object_list %}
+
+    <p><b>De</b> {{item.dataInicio}} <b>a</b> {{item.dataTermino}}</p>
+    <h4>{{item.tipo}}: {{item}}</h4>
+    <p><b>Horário:</b> {{item.horario}}</p>
+    <p><b>Autor:</b> {{item.colaborador}}</p>
+    <p class="texto-justificar">{{item.colaborador.informacoes}}</p>
+    <p class="texto-justificar"> <b>Resumo:</b> {{item.resumo}}</p>
+
+    {% if item.material %}
+    <p><li><a href="{{MEDIA_URL}}{{item.material}}" target="_blank">Ver Material</a></li></p>
+
+    {% endif %}
+
+    <p><li><a href="/precos/{{item.id}}">Ver preços</a></li></p>
+
+    <hr>
+{% empty %}
+    <p>Nenhum minicurso ativo no momento.</p>
+{% endfor %}
+
+{%endblock %}

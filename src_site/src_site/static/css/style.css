@@ -99,3 +99,54 @@ img { border: none; }
 .altura-10{height: 10px;}
 
 .texto-justificar{text-align: justify;}
+
+.errorlist li {color: #a94442}
+
+
+.btn-save {
+  color: #fff;
+  background-color: #FE7B09;
+  border-color: #fff;
+}
+.btn-save:hover,
+.btn-save:focus,
+.btn-save.focus,
+.btn-save:active,
+.btn-save.active,
+.open > .dropdown-toggle.btn-save {
+  color: #fff;
+  background-color: #FE7B09;
+  border-color: #fff;
+}
+.btn-save:active,
+.btn-save.active,
+.open > .dropdown-toggle.btn-save {
+  background-image: none;
+}
+.btn-save.disabled,
+.btn-save[disabled],
+fieldset[disabled] .btn-save,
+.btn-save.disabled:hover,
+.btn-save[disabled]:hover,
+fieldset[disabled] .btn-save:hover,
+.btn-save.disabled:focus,
+.btn-save[disabled]:focus,
+fieldset[disabled] .btn-save:focus,
+.btn-save.disabled.focus,
+.btn-save[disabled].focus,
+fieldset[disabled] .btn-save.focus,
+.btn-save.disabled:active,
+.btn-save[disabled]:active,
+fieldset[disabled] .btn-save:active,
+.btn-save.disabled.active,
+.btn-save[disabled].active,
+fieldset[disabled] .btn-save.active {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.btn-save .badge {
+  color: #5cb85c;
+  background-color: #fff;
+}
+
+.ocultar{display: none;}

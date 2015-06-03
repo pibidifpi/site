@@ -54,6 +54,7 @@ class Atividade(models.Model):
     tipo = models.ForeignKey(TipoAtividade)
     evento = models.ForeignKey(Evento)
     colaborador = models.ForeignKey(Colaborador)
+    material = models.FileField(upload_to='material_atividades/', verbose_name='Material', null=True)
 
     def __str__(self):
         return self.titulo.encode('utf8')
@@ -69,8 +70,8 @@ class Preco(models.Model):
 class Participante(models.Model):
     nome = models.CharField(max_length=50, verbose_name='Nome')
     cpf = models.CharField(max_length=14, verbose_name='CPF')
-    email = models.EmailField(verbose_name='Email')
-    origem = models.CharField(max_length=50, verbose_name='Origem')
+    email = models.EmailField(verbose_name='E-mail')
+    origem = models.CharField(max_length=50, verbose_name='Escola/Empresa atual')
     tipo = models.ForeignKey(TipoParticipante)
 
     def __str__(self):
@@ -78,7 +79,7 @@ class Participante(models.Model):
 
 class Inscricao(models.Model):
     data = models.DateTimeField(auto_now=True)
-    participante = models.ForeignKey(Participante)
+    participante = models.ForeignKey('Participante') #exemplo para nao exigir a existencia da classe ao compilar
     atividades = models.ManyToManyField(Atividade)
 
     def __str__(self):
