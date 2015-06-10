@@ -24,7 +24,7 @@ class Empresa(models.Model):
 
 class Colaborador(models.Model):
     nome = models.CharField(max_length=50, verbose_name='Nome')
-    email = models.EmailField(verbose_name='Email')
+    email = models.EmailField(verbose_name='Email', unique=True)
     informacoes = models.TextField(verbose_name='Informacoes')
 
     def __str__(self):
@@ -54,7 +54,7 @@ class Atividade(models.Model):
     tipo = models.ForeignKey(TipoAtividade)
     evento = models.ForeignKey(Evento)
     colaborador = models.ForeignKey(Colaborador)
-    material = models.FileField(upload_to='material_atividades/', verbose_name='Material', null=True)
+    material = models.FileField(upload_to='material_atividades/', verbose_name='Material', blank=True)
 
     def __str__(self):
         return self.titulo.encode('utf8')
@@ -70,7 +70,7 @@ class Preco(models.Model):
 class Participante(models.Model):
     nome = models.CharField(max_length=50, verbose_name='Nome')
     cpf = models.CharField(max_length=14, verbose_name='CPF')
-    email = models.EmailField(verbose_name='E-mail')
+    email = models.EmailField(verbose_name='E-mail', unique=True)
     origem = models.CharField(max_length=50, verbose_name='Escola/Empresa atual')
     tipo = models.ForeignKey(TipoParticipante)
 

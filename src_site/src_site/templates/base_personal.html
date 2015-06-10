@@ -5,7 +5,7 @@
 <title>Titulo</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="screen" />
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}"  rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-responsive.min.css' %}">
+    <link rel="stylesheet" href="{%     static 'css/bootstrap-responsive.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/sl-slide.css' %}">
@@ -14,7 +14,7 @@
     <script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-
+    <script type="text/javascript" src="{% static 'js/funcoes_gerais.js' %}"></script>
 </head>
 <body>
 
@@ -26,18 +26,24 @@
 
 <div id="right">
 
-<fieldset id="fieldset-inscricao" class="ocultar">
+    <fieldset id="fieldset-inscricao" class="ocultar">
     <legend>Progresso da inscrição</legend>
     <div class="progress">
       <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {% block div_porcentagem_progresso %}{% endblock%}%">
         <span class="sr-only">{% block span_porcentagem_progresso %}{% endblock%}% Completo</span>
       </div>
     </div>
-</fieldset>
-
+  </fieldset>
 
 <h2>{% block pagina %}{% endblock%}</h2>
 <div class="articles">
+
+    <noscript>
+        <h4 class="chamar-atencao">Atenção!<br/>
+            O JavaScript deve estar ativado para que você use o Site com todas suas funcionalidades. <br/>
+            Parece que ele está desativado ou não é compatível com seu navegador.<br/>
+            Ative o JavaScript alterando as opções do navegador e <a href="">tente novamente</a>.</h4>
+    </noscript>
 
     {% block conteudo %}
 
@@ -56,7 +62,7 @@
     <li><a href="{% url 'palestraList' %}">Palestras</a></li>
     <li><a href="{% url 'minicursoList' %}">Minicursos</a></li>
     <li><a href="/informacoes/1">Informações</a></li>
-    <li><a href="{% url 'setaParticipante' %}">Inscrições</a></li>
+    <li><a href="{% url 'novaInscricao' %}">Inscrições</a></li>
 </ul>
 
 </div>
@@ -67,7 +73,5 @@ Instituto Federal de Educação, Ciência e Tecnologia do Piauí.<br />
 Campus Teresina Zona Sul<br />
 </div>
 </div>
-
-
 </body>
 </html>

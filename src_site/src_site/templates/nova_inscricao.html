@@ -1,0 +1,119 @@
+{%extends "base_personal.html" %}
+
+{% block div_porcentagem_progresso %}{{div_porcentagem}}{% endblock%}
+{% block span_porcentagem_progresso %}{{span_porcentagem}}{% endblock%}
+
+{%block pagina %}{{titlePagina}}{%endblock %}
+{%block conteudo %}
+
+<form id='formulario' method='post' enctype='multipart/form-data' action=''>{% csrf_token %}
+
+    <div class="tab-content">
+      <div class="tab-pane ocultar" id="aba-participante">
+
+		{{formParticipante.as_p}}
+
+        <p>
+            <!-- Button -->
+            <div class="control-group">
+              <div class="controls">
+                <button name="etapa" class="btn btn-save" value="1">Avançar</button>
+              </div>
+            </div>
+
+        </p>
+
+
+      </div>
+      <div class="tab-pane ocultar" id="aba-atividades">
+
+        {{formInscricao.atividades.errors}}
+        {{formInscricao.atividades}}
+        {{formInscricao.atividades.help_text}}
+
+        <p>
+            <div class="panel panel-default">
+              <!-- Default panel contents -->
+              <div class="panel-heading"><b> Preços para </b> <span class="descricao-tipo"></span></div>
+
+              <!-- Table -->
+              <table class="table">
+                {% for item in precos %}
+                      <tr>
+                          <td>{{item.atividade}}</td>
+                          <td>R$ <span id="valor_atividade_{{item.atividade.id}}">{{item.normal}}</span></td>
+                    </tr>
+                {% empty %}
+                        <tr>
+                            <td colspan="2">Nenhum preço ativo no momento.</td>
+                        </tr>
+                {% endfor %}
+
+              </table>
+            </div>
+        </p>
+
+        <p>
+            <!-- Button -->
+            <div class="control-group">
+              <div class="controls">
+                <button name="etapa" class="btn btn-save" value="2">Avançar</button>
+              </div>
+            </div>
+
+        </p>
+
+      </div>
+      <div class="tab-pane ocultar" id="aba-confirmacao">
+        <fieldset>
+            <legend>Dados do participante</legend>
+            <h4>Nome: {{formParticipante.nome.value}}</h4>
+            <p><b>CPF:</b> {{formParticipante.cpf.value}}</p>
+            <p><b>E-mail:</b> {{formParticipante.email.value}}</p>
+            <p><b>Escola/Empresa atual:</b> {{formParticipante.origem.value}}</p>
+            <p><b>Tipo:</b> <span class="descricao-tipo"></span></p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Dados das atividades</legend>
+            <p><span id="descricao-atividades"></span></p>
+        </fieldset>
+
+        <h2>Total R$ <span id="valor-total-atividades"></span></h2>
+
+        <p>
+            <!-- Button -->
+            <div class="control-group align-left">
+              <div class="controls">
+                <button name="etapa" class="btn btn-danger" value="4">Voltar para dados do participante</button>
+              </div>
+            </div>
+
+
+          <!-- Button -->
+            <div class="control-group align-left margin-left-2">
+              <div class="controls">
+                <button name="etapa" class="btn btn-info" value="5">Voltar para atividades</button>
+              </div>
+            </div>
+
+
+
+            <!-- Button -->
+            <div class="control-group align-left margin-left-2">
+              <div class="controls">
+                <button name="etapa" class="btn btn-save" value="3">Confirmar</button>
+              </div>
+            </div>
+
+        </p>
+
+      </div>
+
+    </div>
+</form>
+<script>$("#{{abaAtiva}}").slideDown("slow");</script>
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'js/nova_inscricao.js' %}"></script>
+{%endblock %}
+
