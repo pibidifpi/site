@@ -1,7 +1,7 @@
 {%extends "base_personal.html" %}
 
-{% block div_porcentagem_progresso %}{{div_porcentagem}}{% endblock%}
-{% block span_porcentagem_progresso %}{{span_porcentagem}}{% endblock%}
+{% block divPorcentagemProgresso %}{{divPorcentagem}}{% endblock%}
+{% block spanPorcentagemProgresso %}{{span_porcentagem}}{% endblock%}
 
 {%block pagina %}{{titlePagina}}{%endblock %}
 {%block conteudo %}
@@ -10,8 +10,7 @@
 
     <div class="tab-content">
       <div class="tab-pane ocultar" id="aba-participante">
-
-		{{formParticipante.as_p}}
+         {{formParticipante.as_p}}
 
         <p>
             <!-- Button -->

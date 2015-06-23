@@ -55,9 +55,9 @@ admin.site.register(TipoAtividade, TipoAtividadeAdmin)
 
 class AtividadeAdmin(admin.ModelAdmin):
     model = Atividade
-    list_display = ['titulo', 'duracao', 'quantidadeVagas', 'dataInicio', 'dataTermino', 'horario', 'tipo', 'evento', 'colaborador']
-    list_filter = ['tipo__nome', 'evento__nome']
-    search_fields = ['titulo', 'duracao', 'quantidadeVagas', 'dataInicio', 'dataTermino', 'horario', 'tipo__nome',
+    list_display = ['titulo', 'duracao', 'quantidadeVagas', 'quantidadeInscritos', 'dataInicio', 'dataTermino', 'horario', 'tipo', 'evento', 'colaborador', 'disponivel']
+    list_filter = ['tipo__nome', 'evento__nome', 'disponivel']
+    search_fields = ['titulo', 'duracao', 'quantidadeVagas', 'quantidadeInscritos', 'dataInicio', 'dataTermino', 'horario', 'tipo__nome',
                  'evento__nome', 'colaborador__nome']
 admin.site.register(Atividade, AtividadeAdmin)
 

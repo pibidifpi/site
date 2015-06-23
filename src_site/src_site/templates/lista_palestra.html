@@ -14,6 +14,8 @@
 
     {% endif %}
     <p><li><a href="/precos/{{item.id}}">Ver preços</a></li></p>
+    <p><li><span class="text-negrito">{{item.quantidadeInscritos}}</span> Inscritos | <span class="text-negrito">{{item.quantidadeVagas}}</span> Vagas</li></p>
+
     <hr>
 {% empty %}
     <p>Nenhuma palestra ativa no momento.</p>
