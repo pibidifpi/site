@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'src_site.pibid',
     'debug_toolbar',
+    'south',
 )
 
 INTERNAL_IPS = ('127.0.0.1')
@@ -131,3 +132,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
+
+# configuracoes da autenticacao de usuario
+LOGIN_REDIRECT_URL = '/meusdados/'
+LOGIN_URL = '/entrar/'

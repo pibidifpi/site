@@ -63,6 +63,11 @@
     <li><a href="{% url 'minicursoList' %}">Minicursos</a></li>
     <li><a href="/informacoes/1">Informações</a></li>
     <li><a href="{% url 'novaInscricao' %}">Inscrições</a></li>
+    {% if user.is_authenticated %}
+      <li><a href="{% url 'sair' %}">Sair</a></li>
+    {% else %}
+      <li><a href="{% url 'entrar' %}">Acesse sua conta</a></li>
+    {% endif %}
 </ul>
 
 </div>

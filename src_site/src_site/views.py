@@ -8,6 +8,8 @@ from pibid.forms import *
 from django.views import generic
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse #usado para debugar uma variavel
+from django.contrib.auth.decorators import login_required
+
 
 class EventoList(generic.ListView):
     model = Evento
@@ -113,6 +115,19 @@ def atualizaInscritosAtividade(atividades):
         atividade.save()
     #fim logica do controle de vagas
 
+def salvaUsuario(participante):
+    #logica para fazer o controle das vagas por atividade
+    usuario = User()
+
+    usuario.first_name = participante.nome
+    usuario.last_name = participante.nome
+    usuario.email = participante.email
+    usuario.username = participante.email
+    usuario.set_password(participante.email)
+    usuario.save()
+
+    #fim logica do controle de vagas
+
 def confirmaInscricao(request, precos):
     titlePagina = 'Confirme os dados'
     divPorcentagem = 75
@@ -124,12 +139,15 @@ def confirmaInscricao(request, precos):
 
     if formParticipante.is_valid() and formInscricao.is_valid():
         novoParticipante = formParticipante.save()
+
         nInscricao = formInscricao.save(commit=False)
         nInscricao.participante = novoParticipante
         nInscricao.save()
         formInscricao.save_m2m() #save the many-to-many data for the form.
 
         atualizaInscritosAtividade(request.POST.getlist('atividades'))
+
+        salvaUsuario(novoParticipante) #salva o participante na tabela de usuarios
 
         return HttpResponseRedirect(reverse('inscricaoConcluida'))
 
@@ -138,3 +156,9 @@ def confirmaInscricao(request, precos):
 def inscricaoConcluida(request):
     return render_to_response('inscricao_concluida.html',locals(), context_instance=RequestContext(request))
 # fim do passo a passo da inscricao
+
+@login_required
+def meusDados(request):
+    #atividadeEnviada = get_object_or_404(Atividade, id=atividade_id)
+    #object_list = Preco.objects.filter(atividade=atividadeEnviada)
+    return render_to_response('meus_dados.html',locals(), context_instance=RequestContext(request))
